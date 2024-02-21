@@ -1,27 +1,18 @@
-import { useState } from "react";
-
-const btnClick2 = (event) => {
-  console.log("btnClick2");
-};
-const list = [
-  { id: 1, name: "zhangsan" },
-  { id: 2, name: "zhangsan" },
-  { id: 3, name: "zhangsan" },
-  { id: 4, name: "zhangsan" },
-];
+import { useState, useRef } from "react";
+function Son({ onGetMsg, ...props }) {
+  const sonMsg = "son massage";
+  onGetMsg(sonMsg);
+  return <div>this is son {props.children}</div>;
+}
 function App() {
-  const [count, setCount] = useState(0);
-  const btnClick = () => {
-    setCount(count + 1);
+  const getMsg = (msg) => {
+    console.log(msg);
   };
   return (
-    <div onClick={btnClick} className="App">
-      {count}
-      <ul>
-        {list.map((item) => {
-          return <li key={item.id}>{item.name}</li>;
-        })}
-      </ul>
+    <div>
+      <Son onGetMsg={getMsg}>
+        <div>123</div>
+      </Son>
     </div>
   );
 }
