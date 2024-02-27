@@ -1,16 +1,15 @@
-import { useState, useRef } from "react";
-function Son({ onGetMsg, ...props }) {
-  const sonMsg = "son massage";
-  onGetMsg(sonMsg);
+function Son({ onGetAname, ...props }) {
+  const aName = "Aname";
+  onGetAname(aName);
   return <div>this is son {props.children}</div>;
 }
 function App() {
-  const getMsg = (msg) => {
-    console.log(msg);
+  const getAname = (name) => {
+    console.log(name);
   };
   return (
     <div>
-      <Son onGetMsg={getMsg}>
+      <Son onGetAname={getAname}>
         <div>123</div>
       </Son>
     </div>
